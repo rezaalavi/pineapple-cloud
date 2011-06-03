@@ -1,0 +1,25 @@
+<%= form_for(@pineapple_step) do |f| %>
+  <% if @pineapple_step.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pineapple_step.errors.count, "error") %> prohibited this pineapple_step from being saved:</h2>
+
+      <ul>
+      <% @pineapple_step.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

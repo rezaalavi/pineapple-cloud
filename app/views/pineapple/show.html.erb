@@ -1,0 +1,46 @@
+jQuery.noConflict();
+var pineappleVars= {
+currentStep : 1
+};
+var urlParams = {};
+(function () {
+    var e,
+        a = /\+/g,  // Regex for replacing addition symbol with a space
+        r = /([^&=]+)=?([^&]*)/g,
+        d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+        q = window.location.search.substring(1);
+
+    while (e = r.exec(q))
+       urlParams[d(e[1])] = d(e[2]);
+})();
+
+function clickLink(link) {
+   var cancelled = false;
+
+   if (document.createEvent) {
+       var event = document.createEvent("MouseEvents");
+       event.initMouseEvent("click", true, true, window,
+           0, 0, 0, 0, 0,
+           false, false, false, false,
+           0, null);
+       cancelled = !link.dispatchEvent(event);
+   }
+   else if (link.fireEvent) {
+       cancelled = !link.fireEvent("onclick");
+   }
+
+   if (!cancelled) {
+       window.location = link.href;
+   }
+}
+
+jQuery(document).ready(function() {
+  init= urlParams["initp"]
+  if (typeof init == "undefined"){
+    jQuery.getScript("<%=  pineapple_steps_engine_path %>");
+    }
+  else {
+  jQuery.getScript("<%=  pineapple_steps_engine_path%>?init="+init);
+  }
+ });
+

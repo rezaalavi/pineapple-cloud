@@ -1,0 +1,25 @@
+<h1>Listing pineapple_steps</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pineapple_steps.each do |pineapple_step| %>
+  <tr>
+    <td><%= pineapple_step.name %></td>
+    <td><%= pineapple_step.body %></td>
+    <td><%= link_to 'Show', pineapple_step %></td>
+    <td><%= link_to 'Edit', edit_pineapple_step_path(pineapple_step) %></td>
+    <td><%= link_to 'Destroy', pineapple_step, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pineapple step', new_pineapple_step_path %>
