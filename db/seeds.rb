@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+PineappleStep.create(:name => 'test', :body => 'click_link "Next Step" \n next_step "test2"');
+PineappleStep.create(:name => 'test2', :body => 'click_on "Next Step" \n next_step "test3"');
